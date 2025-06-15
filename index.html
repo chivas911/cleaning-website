@@ -9,35 +9,40 @@
       background: #f3f5fa;
       font-family: Arial, sans-serif;
     }
-    /* Full-bleed wrapper */
+    /* full-bleed, but height auto */
     .slider-wrapper {
       position: relative;
       width: 100vw;
       left: 50%;
-      margin-left: -50vw;   /* center full-width */
+      margin-left: -50vw;
       overflow: hidden;
-      height: 400px;        /* adjust height as desired */
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      margin: 40px 0;
     }
     .slider-container {
       position: relative;
       width: 100%;
-      height: 100%;
       user-select: none;
       cursor: ew-resize;
     }
-    /* Both images fill the container */
-    .slider-container img {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
+    /* BEFORE image in normal flow defines height */
+    .slider-container img.before {
+      display: block;
+      width: 100%;
+      height: auto;
       pointer-events: none;
     }
-    /* Masking overlay on clean image */
+    /* AFTER image sits on top, clipped by clip-path */
     .clean {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: auto;
       clip-path: inset(0 50% 0 0);
+      pointer-events: none;
     }
-    /* Single circular handle */
+    /* handle */
     .handle {
       position: absolute;
       top: 50%; left: 50%;
@@ -59,7 +64,6 @@
       font-size: 1.2rem;
       color: #007bff;
       cursor: pointer;
-      user-select: none;
     }
     .handle span:hover {
       color: #0056b3;
@@ -70,9 +74,9 @@
 
   <div class="slider-wrapper">
     <div class="slider-container" id="slider">
-      <!-- Dirty (before) -->
-      <img src="dirty-room.png" alt="Dirty Room">
-      <!-- Clean (after) on top, masked -->
+      <!-- Dirty (before) image: normal flow -->
+      <img src="dirty-room.png" alt="Dirty Room" class="before">
+      <!-- Clean (after) image: exactly same size, clipped -->
       <img src="clean-room.png" alt="Clean Room" class="clean" id="clean">
       <!-- Handle -->
       <div class="handle" id="handle">
@@ -114,7 +118,7 @@
         setSlider(pct + 10);
       });
 
-      // initialize at center
+      // initialize in the middle
       setSlider(50);
     })();
   </script>
