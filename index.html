@@ -1,22 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Before & After Cleaning</title>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cleaning Service</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --blue: #1764c0;
+      --blue-dark: #124a8a;
+      --white: #fff;
+      --gray-bg: #f7f8fa;
+      --gray-card: #f2f4f7;
+      --shadow: 0 2px 16px #0001;
+      --radius: 14px;
+    }
     body {
       margin: 0;
-      background: #f3f5fa;
-      font-family: Arial, sans-serif;
+      background: var(--gray-bg);
+      font-family: 'Roboto', Arial, sans-serif;
+      color: #232b36;
+    }
+    /* NAV */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 40px 20px 40px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      font-family: 'Montserrat', Arial, sans-serif;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--blue);
+      letter-spacing: -1px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      align-items: center;
+      font-size: 1rem;
+    }
+    .nav-links a {
+      color: #232b36;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.16s;
+      padding: 2px 0;
+    }
+    .nav-links a:hover {
+      color: var(--blue);
+    }
+    .btn-quote {
+      background: var(--blue);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      padding: 10px 22px;
+      font-family: inherit;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-quote:hover {
+      background: var(--blue-dark);
+    }
+    /* HERO */
+    .hero {
+      background: var(--blue);
+      color: var(--white);
+      padding: 54px 0 40px 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+    .hero-text {
+      max-width: 480px;
+      margin-left: 40px;
+    }
+    .hero-title {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      line-height: 1.16;
+    }
+    .hero-desc {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 36px;
+    }
+    .btn-learn {
+      background: var(--white);
+      color: var(--blue);
+      font-weight: bold;
+      padding: 14px 34px;
+      border: none;
+      border-radius: 7px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s;
+      box-shadow: var(--shadow);
+    }
+    .btn-learn:hover {
+      background: #e9f1fb;
+      color: var(--blue-dark);
+    }
+    .hero-graphic {
+      width: 310px;
+      min-width: 180px;
+      max-width: 350px;
+      margin-right: 30px;
+    }
+    .hero-graphic img {
+      width: 100%;
+      display: block;
+    }
+    /* SERVICES */
+    .services-section {
+      padding: 50px 0 38px 0;
+      text-align: center;
+      background: var(--white);
+    }
+    .services-title {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 36px;
+      color: #232b36;
+    }
+    .services-list {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .service-card {
+      background: var(--gray-card);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      padding: 34px 26px 26px 26px;
+      width: 260px;
+      min-width: 180px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.14s, box-shadow 0.14s;
+    }
+    .service-card:hover {
+      transform: translateY(-8px) scale(1.04);
+      box-shadow: 0 6px 26px #0002;
+    }
+    .service-icon {
+      font-size: 2.8rem;
+      color: var(--blue);
+      margin-bottom: 14px;
+    }
+    .service-card h3 {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 1.18rem;
+      font-weight: 700;
+      margin: 0 0 7px 0;
+    }
+    .service-card p {
+      font-size: 1rem;
+      color: #444c59;
+      margin: 0;
+    }
+    .btn-contact {
+      background: var(--blue);
+      color: var(--white);
+      font-size: 1.18rem;
+      font-family: inherit;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      padding: 14px 38px;
+      margin: 0 auto;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: background 0.18s;
+      display: block;
+    }
+    .btn-contact:hover {
+      background: var(--blue-dark);
+    }
+    /* --- SLIDER --- */
+    .slider-section {
+      max-width: 1000px;
+      margin: 48px auto 60px auto;
+      padding: 0;
+    }
+    .slider-title {
+      text-align: center;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 1.7rem;
+      margin-bottom: 18px;
+      font-weight: 700;
+      color: #232b36;
     }
     .slider-wrapper {
-      max-width: 1200px;
-      margin: 40px auto;
-      height: 450px;            /* bigger height for larger images */
-      overflow: hidden;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
       position: relative;
+      width: 100%;
+      height: 400px;
+      max-width: 950px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      background: #eaf1fb;
     }
     .slider-container {
       position: relative;
@@ -25,7 +228,6 @@
       user-select: none;
       touch-action: none;
     }
-    /* Both images fill the container */
     .slider-container img {
       position: absolute;
       top: 0; left: 0;
@@ -33,9 +235,9 @@
       object-fit: cover;
       pointer-events: none;
     }
-    /* Masking the clean image */
     .clean {
       clip-path: inset(0 50% 0 0);
+      z-index: 1;
     }
     .handle {
       position: absolute;
@@ -43,44 +245,118 @@
       transform: translate(-50%,-50%);
       width: 56px; height: 56px;
       background: #fff;
-      border: 3px solid #007bff;
+      border: 3px solid #1764c0;
       border-radius: 50%;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.16);
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 8px;
-      z-index: 10;
+      z-index: 2;
       cursor: ew-resize;
+      user-select: none;
     }
     .handle span {
       font-size: 1.4rem;
-      color: #007bff;
+      color: #1764c0;
       user-select: none;
+      cursor: pointer;
     }
     .handle span:active {
-      color: #0056b3;
+      color: #124a8a;
+    }
+    @media (max-width: 900px) {
+      .navbar { padding: 14px 16px; }
+      .hero { flex-direction: column-reverse; padding: 38px 0 24px 0;}
+      .hero-text { margin: 0 14px 0 14px;}
+      .hero-graphic { margin: 0 0 26px 0;}
+      .services-list { flex-direction: column; gap: 20px; }
+      .service-card { width: 98%; }
+      .services-section { padding: 34px 0 20px 0;}
+      .slider-section { margin: 38px 0 40px 0; }
+      .slider-wrapper { height: 220px; max-width: 98vw; }
     }
     @media (max-width: 600px) {
-      .slider-wrapper { height: 240px; max-width: 98vw; }
+      .slider-wrapper { height: 150px; }
       .handle { width: 38px; height: 38px; padding: 0 5px; }
       .handle span { font-size: 1rem; }
+    }
+    @media (max-width: 500px) {
+      .navbar { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .hero-title { font-size: 1.36rem;}
+      .services-title { font-size: 1.28rem; }
+      .btn-contact { font-size: 1rem; padding: 10px 10px; }
     }
   </style>
 </head>
 <body>
-
-  <div class="slider-wrapper">
-    <div class="slider-container" id="slider">
-      <img src="dirty-room.png" alt="Dirty Room">
-      <img src="clean-room.png" alt="Clean Room" class="clean" id="clean">
-      <div class="handle" id="handle">
-        <span id="left">&larr;</span>
-        <span id="right">&rarr;</span>
+  <!-- NAV -->
+  <nav class="navbar">
+    <span class="logo">Cleaning Service</span>
+    <div class="nav-links">
+      <a href="#">HOME</a>
+      <a href="#">ABOUT</a>
+      <a href="#">SERVICES</a>
+      <a href="#">CONTACT</a>
+      <button class="btn-quote">Get Quote</button>
+    </div>
+  </nav>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1 class="hero-title">THE BEST CLEANING SERVICE FOR YOUR HOME</h1>
+      <div class="hero-desc">
+        We provide top-quality cleaning<br>
+        services to keep your home looking its best.
+      </div>
+      <button class="btn-learn">Learn More</button>
+    </div>
+    <div class="hero-graphic">
+      <img src="https://cdn.pixabay.com/photo/2016/03/31/20/10/cleaning-1295312_1280.png" alt="Cleaning Lady Illustration" loading="lazy">
+    </div>
+  </section>
+  <!-- SERVICES -->
+  <section class="services-section">
+    <div class="services-title">OUR SERVICES</div>
+    <div class="services-list">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="36" height="36" fill="none" stroke="#1764c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16.5 18 7l14 9.5"/><path d="M6 18.5v10a1 1 0 0 0 1 1h22a1 1 0 0 0 1-1v-10"/><path d="M14 29V21h8v8"/></svg>
+        </div>
+        <h3>House Cleaning</h3>
+        <p>Thorough cleaning of every room in your home</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="36" height="36" fill="none" stroke="#1764c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="22" width="32" height="8" rx="2"/><path d="M8 22v-6a6 6 0 1 1 12 0v6"/><path d="M28 22v-4a4 4 0 0 1 8 0v4"/></svg>
+        </div>
+        <h3>Deep Cleaning</h3>
+        <p>Intensive cleaning to remove dirt &amp; grime</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="36" height="36" fill="none" stroke="#1764c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 32h24M6 32V19a7 7 0 0 1 14 0v13"/><circle cx="24" cy="32" r="4"/></svg>
+        </div>
+        <h3>Move-In/Move-Out</h3>
+        <p>Cleaning services for your move-in or move-out needs</p>
       </div>
     </div>
-  </div>
-
+    <button class="btn-contact">Get in Touch</button>
+  </section>
+  <!-- SLIDER -->
+  <section class="slider-section">
+    <div class="slider-title">Before & After</div>
+    <div class="slider-wrapper">
+      <div class="slider-container" id="slider">
+        <img src="dirty-room.png" alt="Dirty Room">
+        <img src="clean-room.png" alt="Clean Room" class="clean" id="clean">
+        <div class="handle" id="handle">
+          <span id="left">&larr;</span>
+          <span id="right">&rarr;</span>
+        </div>
+      </div>
+    </div>
+  </section>
   <script>
     (function(){
       const slider = document.getElementById('slider');
@@ -133,6 +409,5 @@
       setSlider(50);
     })();
   </script>
-
 </body>
 </html>
