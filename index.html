@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Before & After Cleaning</title>
   <style>
     body {
@@ -10,41 +9,35 @@
       background: #f3f5fa;
       font-family: Arial, sans-serif;
     }
-
-    /* Centered card */
+    /* Full-bleed wrapper */
     .slider-wrapper {
-      max-width: 900px;
-      margin: 40px auto;
+      position: relative;
+      width: 100vw;
+      left: 50%;
+      margin-left: -50vw;   /* center full-width */
       overflow: hidden;
-      border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      height: 400px;        /* adjust height as desired */
     }
-
-    /* Container sized by the dirty image */
     .slider-container {
       position: relative;
       width: 100%;
+      height: 100%;
       user-select: none;
       cursor: ew-resize;
     }
-
-    /* Both images fill the container equally */
+    /* Both images fill the container */
     .slider-container img {
-      display: block;
-      width: 100%;
-      height: auto;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
       pointer-events: none;
     }
-
-    /* Overlay the clean image and mask its right side */
+    /* Masking overlay on clean image */
     .clean {
-      position: absolute;
-      top: 0;
-      left: 0;
       clip-path: inset(0 50% 0 0);
     }
-
-    /* Single circular handle with two arrows */
+    /* Single circular handle */
     .handle {
       position: absolute;
       top: 50%; left: 50%;
@@ -59,6 +52,8 @@
       justify-content: space-between;
       padding: 0 8px;
       z-index: 10;
+      cursor: ew-resize;
+      user-select: none;
     }
     .handle span {
       font-size: 1.2rem;
@@ -77,7 +72,7 @@
     <div class="slider-container" id="slider">
       <!-- Dirty (before) -->
       <img src="dirty-room.png" alt="Dirty Room">
-      <!-- Clean (after) masked -->
+      <!-- Clean (after) on top, masked -->
       <img src="clean-room.png" alt="Clean Room" class="clean" id="clean">
       <!-- Handle -->
       <div class="handle" id="handle">
@@ -94,30 +89,32 @@
       const handle = document.getElementById('handle');
       const left   = document.getElementById('left');
       const right  = document.getElementById('right');
-      let pct = 50;  // current percentage
+      let pct = 50, dragging = false;
 
-      function setSlider(newPct) {
-        pct = Math.max(0, Math.min(100, newPct));
-        // mask the right (100 - pct)%
+      function setSlider(p) {
+        pct = Math.max(0, Math.min(100, p));
         clean.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
-        handle.style.left = pct + '%';
+        handle.style.left  = pct + '%';
       }
 
-      handle.addEventListener('mousedown', ()=> dragging = true);
-      document.addEventListener('mouseup',   ()=> dragging = false);
+      handle.addEventListener('mousedown', () => dragging = true);
+      document.addEventListener('mouseup',   () => dragging = false);
       document.addEventListener('mousemove', e => {
         if (!dragging) return;
-        const rect = slider.getBoundingClientRect();
-        setSlider((e.clientX - rect.left) / rect.width * 100);
+        const r = slider.getBoundingClientRect();
+        setSlider((e.clientX - r.left) / r.width * 100);
       });
 
-      let dragging = false;
-      handle.addEventListener('mousedown', ()=> dragging = true);
+      left.addEventListener('click', e => {
+        e.stopPropagation();
+        setSlider(pct - 10);
+      });
+      right.addEventListener('click', e => {
+        e.stopPropagation();
+        setSlider(pct + 10);
+      });
 
-      left .addEventListener('click', e => { e.stopPropagation(); setSlider(pct - 10); });
-      right.addEventListener('click', e => { e.stopPropagation(); setSlider(pct + 10); });
-
-      // initialize centered
+      // initialize at center
       setSlider(50);
     })();
   </script>
