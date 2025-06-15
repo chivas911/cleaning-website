@@ -5,6 +5,18 @@
   <title>Cleaning Service</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      width: 100vw;
+      overflow-x: hidden;
+      background: #f7f8fa;
+    }
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      color: #232b36;
+    }
     :root {
       --blue: #1764c0;
       --blue-dark: #124a8a;
@@ -13,12 +25,6 @@
       --gray-card: #f2f4f7;
       --shadow: 0 2px 16px #0001;
       --radius: 14px;
-    }
-    body {
-      margin: 0;
-      background: var(--gray-bg);
-      font-family: 'Roboto', Arial, sans-serif;
-      color: #232b36;
     }
     /* NAV */
     .navbar {
@@ -32,6 +38,8 @@
       position: sticky;
       top: 0;
       z-index: 10;
+      max-width: 100vw;
+      overflow-x: hidden;
     }
     .navbar .logo {
       font-size: 1.5rem;
@@ -102,6 +110,8 @@
       align-items: center;
       justify-content: center;
       gap: 20px;
+      max-width: 100vw;
+      overflow-x: hidden;
     }
     .hero-text {
       max-width: 480px;
@@ -161,6 +171,8 @@
       padding: 50px 0 38px 0;
       text-align: center;
       background: var(--white);
+      max-width: 100vw;
+      overflow-x: hidden;
     }
     .services-title {
       font-family: 'Montserrat', Arial, sans-serif;
@@ -233,6 +245,8 @@
       max-width: 1000px;
       margin: 48px auto 60px auto;
       padding: 0;
+      width: 100%;
+      overflow-x: hidden;
     }
     .slider-title {
       text-align: center;
@@ -299,27 +313,27 @@
     }
     /* RESPONSIVE DESIGN */
     @media (max-width: 900px) {
-      .navbar { padding: 14px 16px; }
+      .navbar { padding: 14px 8px; }
       .hero { flex-direction: column-reverse; padding: 38px 0 24px 0; align-items: center;}
-      .hero-text { margin: 0 14px 0 14px; align-items: center;}
+      .hero-text { margin: 0 8px 0 8px; align-items: center;}
       .hero-title, .hero-desc { text-align: center; }
       .hero-graphic { margin: 0 0 26px 0;}
       .services-list { flex-direction: column; gap: 20px; }
       .service-card { width: 98%; }
       .services-section { padding: 34px 0 20px 0;}
       .slider-section { margin: 38px 0 40px 0; }
-      .slider-wrapper { height: 220px; max-width: 98vw; }
+      .slider-wrapper { height: 220px; max-width: 100vw; }
     }
     @media (max-width: 700px) {
       .navbar {
         flex-wrap: wrap;
-        padding: 14px 16px;
+        padding: 14px 4vw;
       }
       .nav-toggle {
         display: flex;
       }
       .nav-links {
-        width: 100%;
+        width: 100vw;
         flex-direction: column;
         align-items: center;
         background: var(--white);
@@ -340,7 +354,7 @@
         padding-bottom: 12px;
       }
       .nav-links a, .btn-quote {
-        width: 100%;
+        width: 100vw;
         text-align: center;
         margin: 0;
         padding: 13px 0 7px 0;
