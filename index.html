@@ -4,50 +4,61 @@
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Before & After Cleaning</title>
   <style>
-    body {
+    /* reset any page padding/margins and hide horizontal overflow */
+    html, body {
       margin: 0;
+      padding: 0;
+      overflow-x: hidden;
       background: #f3f5fa;
       font-family: Arial, sans-serif;
     }
-    /* full-bleed, but height auto */
+
+    /* full-width, centered slider wrapper */
     .slider-wrapper {
       position: relative;
       width: 100vw;
       left: 50%;
-      margin-left: -50vw;
+      transform: translateX(-50%);
       overflow: hidden;
       border-radius: 16px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
       margin: 40px 0;
     }
+
     .slider-container {
       position: relative;
       width: 100%;
       user-select: none;
       cursor: ew-resize;
     }
-    /* BEFORE image in normal flow defines height */
-    .slider-container img.before {
+
+    /* both images fill width, height auto (same size) */
+    .slider-container img {
       display: block;
       width: 100%;
       height: auto;
       pointer-events: none;
     }
-    /* AFTER image sits on top, clipped by clip-path */
+
+    /* overlay clean image and mask right side */
     .clean {
       position: absolute;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       height: auto;
       clip-path: inset(0 50% 0 0);
       pointer-events: none;
     }
-    /* handle */
+
+    /* single circular handle with both arrows */
     .handle {
       position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
-      width: 60px; height: 60px;
+      top: 50%; 
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px; 
+      height: 60px;
       background: #fff;
       border: 4px solid #007bff;
       border-radius: 50%;
@@ -64,6 +75,7 @@
       font-size: 1.2rem;
       color: #007bff;
       cursor: pointer;
+      user-select: none;
     }
     .handle span:hover {
       color: #0056b3;
@@ -74,11 +86,11 @@
 
   <div class="slider-wrapper">
     <div class="slider-container" id="slider">
-      <!-- Dirty (before) image: normal flow -->
-      <img src="dirty-room.png" alt="Dirty Room" class="before">
-      <!-- Clean (after) image: exactly same size, clipped -->
+      <!-- Dirty room -->
+      <img src="dirty-room.png" alt="Dirty Room">
+      <!-- Clean room overlay -->
       <img src="clean-room.png" alt="Clean Room" class="clean" id="clean">
-      <!-- Handle -->
+      <!-- Handle with arrows -->
       <div class="handle" id="handle">
         <span id="left">&larr;</span>
         <span id="right">&rarr;</span>
@@ -109,16 +121,10 @@
         setSlider((e.clientX - r.left) / r.width * 100);
       });
 
-      left.addEventListener('click', e => {
-        e.stopPropagation();
-        setSlider(pct - 10);
-      });
-      right.addEventListener('click', e => {
-        e.stopPropagation();
-        setSlider(pct + 10);
-      });
+      left.addEventListener('click', e => { e.stopPropagation(); setSlider(pct - 10); });
+      right.addEventListener('click', e => { e.stopPropagation(); setSlider(pct + 10); });
 
-      // initialize in the middle
+      // initialize at center
       setSlider(50);
     })();
   </script>
