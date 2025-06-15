@@ -3,41 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cleaning Slider Demo</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/twentytwenty/css/twentytwenty.css">
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery-event-move@2.0.0/js/jquery.event.move.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/twentytwenty/js/jquery.twentytwenty.js"></script>
-  <style>
-    body {
-      background: #f5f5f5;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    .centered {
-      max-width: 800px;
-      margin: 60px auto 40px;
-      padding: 30px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 24px #0001;
-    }
-    h1 { text-align: center; margin-bottom: 24px;}
-  </style>
+  <title>Before/After Fullscreen Slider</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="centered">
-    <h1>Before / After Cleaning</h1>
-    <div class="twentytwenty-container" style="width:100%; max-width:700px; margin:auto;">
-      <img src="dirty-room.png" alt="Dirty Room"/>
-      <img src="clean-room.png" alt="Clean Room"/>
+  <div class="slider-fullscreen" id="slider">
+    <img src="dirty-room.png" alt="Dirty Room" class="slider-img" />
+    <div class="after-image" id="afterImage">
+      <img src="clean-room.png" alt="Clean Room" class="slider-img" />
+    </div>
+    <div class="slider-handle" id="sliderHandle">
+      <span class="arrow left-arrow">&#8592;</span>
+      <div class="handle-line"></div>
+      <span class="arrow right-arrow">&#8594;</span>
     </div>
   </div>
-  <script>
-    $(function(){
-      $(".twentytwenty-container").twentytwenty();
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
