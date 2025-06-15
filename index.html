@@ -4,46 +4,48 @@
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Before & After Cleaning</title>
   <style>
-    body { margin:0; background:#f3f5fa; font-family:Arial,sans-serif; }
-    /* Centered, fixed-height wrapper */
+    body {
+      margin: 0;
+      background: #f3f5fa;
+      font-family: Arial, sans-serif;
+    }
+    /* Centered card */
     .slider-wrapper {
       max-width: 900px;
-      height: 400px;
       margin: 40px auto;
-      position: relative;
       overflow: hidden;
       border-radius: 16px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
+    /* Slider container sized by the dirty image */
     .slider-container {
       position: relative;
       width: 100%;
-      height: 100%;
-      cursor: ew-resize;
       user-select: none;
+      cursor: ew-resize;
     }
-    /* Both images absolutely cover the full container */
+    /* Both images fill container width, height auto */
     .slider-container img {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
+      display: block;
+      width: 100%;
+      height: auto;
       pointer-events: none;
     }
-    /* Clip the left half of the “after” image */
+    /* Overlay container masks the clean image */
     .slider-after {
       position: absolute;
       top: 0; left: 0;
-      width: 50%; height: 100%;
+      width: 50%;      /* start at half */
+      height: 100%;
       overflow: hidden;
     }
     .slider-after img {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
+      display: block;
+      width: 100%;
+      height: auto;
+      pointer-events: none;
     }
-    /* Single circular handle, centered vertically */
+    /* Circular handle with two arrows */
     .handle {
       position: absolute;
       top: 50%; left: 50%;
@@ -59,15 +61,16 @@
       padding: 0 8px;
       z-index: 10;
       cursor: ew-resize;
-      user-select: none;
     }
     .handle span {
       font-size: 1.2rem;
       color: #007bff;
-      cursor: pointer;
       user-select: none;
+      cursor: pointer;
     }
-    .handle span:hover { color: #0056b3; }
+    .handle span:hover {
+      color: #0056b3;
+    }
   </style>
 </head>
 <body>
@@ -75,12 +78,12 @@
   <div class="slider-wrapper">
     <div class="slider-container" id="slider">
       <!-- Dirty (before) -->
-      <img src="dirty-room.png" alt="Dirty Room" />
-      <!-- Clean (after) clipped to left 50% -->
+      <img src="dirty-room.png" alt="Dirty Room">
+      <!-- Clean (after) masked to 50% -->
       <div class="slider-after" id="after">
-        <img src="clean-room.png" alt="Clean Room" />
+        <img src="clean-room.png" alt="Clean Room">
       </div>
-      <!-- Handle with both arrows -->
+      <!-- Handle -->
       <div class="handle" id="handle">
         <span id="left">&larr;</span>
         <span id="right">&rarr;</span>
@@ -97,6 +100,7 @@
       const right  = document.getElementById('right');
       let dragging = false;
 
+      // Move slider to pct% (0–100)
       function setPos(pct) {
         pct = Math.max(0, Math.min(100, pct));
         after.style.width = pct + '%';
@@ -111,10 +115,16 @@
         setPos((e.clientX - r.left) / r.width * 100);
       });
 
-      left .addEventListener('click', e => { e.stopPropagation(); setPos((parseFloat(after.style.width)||50) - 10); });
-      right.addEventListener('click', e => { e.stopPropagation(); setPos((parseFloat(after.style.width)||50) + 10); });
+      left.addEventListener('click', e => {
+        e.stopPropagation();
+        setPos((parseFloat(after.style.width)||50) - 10);
+      });
+      right.addEventListener('click', e => {
+        e.stopPropagation();
+        setPos((parseFloat(after.style.width)||50) + 10);
+      });
 
-      // initialize at 50%
+      // Start centered
       setPos(50);
     })();
   </script>
