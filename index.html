@@ -2,56 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Cleaning Before/After</title>
+  <title>Before & After Cleaning</title>
   <style>
-    body {
-      margin: 0;
-      background: #f3f5fa;
-      font-family: Arial, sans-serif;
-    }
-
-    /* Centered wrapper instead of full-bleed */
+    /* reset & background */
+    body { margin:0; background:#f3f5fa; font-family:Arial,sans-serif; }
+    /* full-width wrapper with overflow hidden & rounded corners */
     .slider-wrapper {
-      max-width: 900px;         /* whatever width you like */
-      margin: 40px auto;        /* vertical space + center */
+      position: relative;
+      width: 100vw;
+      left: 50%; margin-left: -50vw;
       overflow: hidden;
       border-radius: 16px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      height: 400px;            /* fixed height for slider */
+      /* height auto: driven by the "before" image */
     }
-
+    /* the relative container holds everything */
     .slider-container {
       position: relative;
       width: 100%;
-      height: 100%;
-      cursor: ew-resize;
       user-select: none;
+      cursor: ew-resize;
     }
-    /* the “before” image sets the height */
+    /* BEFORE image: normal flow, width 100%, height auto */
     .slider-container img.before {
       display: block;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
       pointer-events: none;
     }
-    /* clip the left half of the “after” image */
+    /* AFTER clip container: 50% width, full height, overflow hidden */
     .slider-after {
       position: absolute;
       top: 0; left: 0;
       width: 50%; height: 100%;
       overflow: hidden;
     }
+    /* AFTER image: double width so left half lines up perfectly */
     .slider-after img {
       position: absolute;
       top: 0; left: 0;
-      width: 200%;   /* double width, so left half lines up */
-      height: 100%;
-      object-fit: cover;
+      width: 200%;
+      height: auto;
       pointer-events: none;
     }
-
-    /* single circular handle centered vertically */
+    /* circular handle in middle, vertically centered */
     .handle {
       position: absolute;
       top: 50%; left: 50%;
@@ -61,13 +55,10 @@
       border: 4px solid #007bff;
       border-radius: 50%;
       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 6px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 8px;
       z-index: 10;
       cursor: ew-resize;
-      user-select: none;
     }
     .handle span {
       font-size: 1.2rem;
@@ -75,22 +66,20 @@
       cursor: pointer;
       user-select: none;
     }
-    .handle span:hover {
-      color: #0056b3;
-    }
+    .handle span:hover { color: #0056b3; }
   </style>
 </head>
 <body>
 
   <div class="slider-wrapper">
     <div class="slider-container" id="slider">
-      <!-- Before image -->
+      <!-- BEFORE (dirty) -->
       <img src="dirty-room.png" alt="Dirty Room" class="before">
-      <!-- After half -->
+      <!-- AFTER (clean) -->
       <div class="slider-after" id="after">
         <img src="clean-room.png" alt="Clean Room">
       </div>
-      <!-- Single circle handle with both arrows -->
+      <!-- HANDLE with two arrows -->
       <div class="handle" id="handle">
         <span id="left">&larr;</span>
         <span id="right">&rarr;</span>
@@ -117,8 +106,8 @@
       document.addEventListener('mouseup',   () => dragging = false);
       document.addEventListener('mousemove', e => {
         if (!dragging) return;
-        const rect = slider.getBoundingClientRect();
-        setPos((e.clientX - rect.left) / rect.width * 100);
+        const r = slider.getBoundingClientRect();
+        setPos((e.clientX - r.left) / r.width * 100);
       });
 
       left.addEventListener('click', e => {
@@ -130,7 +119,7 @@
         setPos((parseFloat(after.style.width)||50) + 10);
       });
 
-      // initialize at 50%
+      // initialize at center
       setPos(50);
     })();
   </script>
