@@ -4,80 +4,63 @@
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Before & After Cleaning</title>
   <style>
-    /* reset any page padding/margins and hide horizontal overflow */
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
-      overflow-x: hidden;
       background: #f3f5fa;
       font-family: Arial, sans-serif;
     }
-
-    /* full-width, centered slider wrapper */
+    /* Centered card with fixed height */
     .slider-wrapper {
-      position: relative;
-      width: 100vw;
-      left: 50%;
-      transform: translateX(-50%);
+      max-width: 900px;
+      margin: 40px auto;
+      height: 300px;               /* adjust this to control vertical space */
       overflow: hidden;
       border-radius: 16px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      margin: 40px 0;
+      position: relative;
     }
-
     .slider-container {
       position: relative;
       width: 100%;
+      height: 100%;
       user-select: none;
-      cursor: ew-resize;
+      touch-action: none;          /* disable browser touch gestures */
     }
-
-    /* both images fill width, height auto (same size) */
+    /* Both images fill the container */
     .slider-container img {
-      display: block;
-      width: 100%;
-      height: auto;
-      pointer-events: none;
-    }
-
-    /* overlay clean image and mask right side */
-    .clean {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: auto;
-      clip-path: inset(0 50% 0 0);
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
       pointer-events: none;
     }
-
-    /* single circular handle with both arrows */
+    /* Masking the clean image */
+    .clean {
+      clip-path: inset(0 50% 0 0);
+    }
+    /* Single circular handle */
     .handle {
       position: absolute;
-      top: 50%; 
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 60px; 
-      height: 60px;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 50px; height: 50px;
       background: #fff;
-      border: 4px solid #007bff;
+      border: 3px solid #007bff;
       border-radius: 50%;
       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 8px;
+      padding: 0 6px;
       z-index: 10;
       cursor: ew-resize;
-      user-select: none;
     }
     .handle span {
       font-size: 1.2rem;
       color: #007bff;
-      cursor: pointer;
       user-select: none;
     }
-    .handle span:hover {
+    .handle span:active {
       color: #0056b3;
     }
   </style>
@@ -86,11 +69,8 @@
 
   <div class="slider-wrapper">
     <div class="slider-container" id="slider">
-      <!-- Dirty room -->
       <img src="dirty-room.png" alt="Dirty Room">
-      <!-- Clean room overlay -->
       <img src="clean-room.png" alt="Clean Room" class="clean" id="clean">
-      <!-- Handle with arrows -->
       <div class="handle" id="handle">
         <span id="left">&larr;</span>
         <span id="right">&rarr;</span>
@@ -113,6 +93,7 @@
         handle.style.left  = pct + '%';
       }
 
+      // Mouse events
       handle.addEventListener('mousedown', () => dragging = true);
       document.addEventListener('mouseup',   () => dragging = false);
       document.addEventListener('mousemove', e => {
@@ -121,10 +102,34 @@
         setSlider((e.clientX - r.left) / r.width * 100);
       });
 
-      left.addEventListener('click', e => { e.stopPropagation(); setSlider(pct - 10); });
-      right.addEventListener('click', e => { e.stopPropagation(); setSlider(pct + 10); });
+      // Touch events
+      handle.addEventListener('touchstart', e => {
+        dragging = true;
+        e.preventDefault();
+      });
+      document.addEventListener('touchend', e => {
+        dragging = false;
+      });
+      document.addEventListener('touchmove', e => {
+        if (!dragging) return;
+        const touch = e.touches[0];
+        const r = slider.getBoundingClientRect();
+        setSlider((touch.clientX - r.left) / r.width * 100);
+        e.preventDefault();
+      });
 
-      // initialize at center
+      // Arrow clicks & taps
+      [ left, right ].forEach(el => {
+        el.addEventListener('click', arrowHandler);
+        el.addEventListener('touchend', arrowHandler);
+      });
+      function arrowHandler(e) {
+        e.stopPropagation();
+        const delta = (e.currentTarget.id === 'left' ? -10 : 10);
+        setSlider(pct + delta);
+      }
+
+      // Initialize centered
       setSlider(50);
     })();
   </script>
