@@ -3,46 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Shiny Clean Services</title>
-  <!-- TwentyTwenty CSS & jQuery -->
+  <title>Cleaning Slider Demo</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/twentytwenty/css/twentytwenty.css">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-event-move@2.0.0/js/jquery.event.move.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/twentytwenty/js/jquery.twentytwenty.js"></script>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: #f5f5f5;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .centered {
+      max-width: 800px;
+      margin: 60px auto 40px;
+      padding: 30px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 24px #0001;
+    }
+    h1 { text-align: center; margin-bottom: 24px;}
+  </style>
 </head>
 <body>
-
-  <!-- BEFORE/AFTER SLIDER HERO SECTION -->
-  <div class="twentytwenty-container" style="max-width: 1000px; margin: 40px auto;">
-    <img src="dirty-room.png" alt="Dirty Room"/>
-    <img src="clean-room.png" alt="Clean Room"/>
-  </div>
-
-  <!-- SERVICES -->
-  <section class="section">
-    <h2>Our Services</h2>
-    <div class="service-cards">
-      <div class="card">
-        <h3>Home Cleaning</h3>
-        <p>Detailed, affordable cleaning services for your home.</p>
-      </div>
-      <div class="card">
-        <h3>Deep Cleaning</h3>
-        <p>Perfect for seasonal or post-renovation cleaning.</p>
-      </div>
-      <div class="card">
-        <h3>Move-In / Move-Out</h3>
-        <p>Leave your home spotless before/after moving.</p>
-      </div>
+  <div class="centered">
+    <h1>Before / After Cleaning</h1>
+    <div class="twentytwenty-container" style="width:100%; max-width:700px; margin:auto;">
+      <img src="dirty-room.png" alt="Dirty Room"/>
+      <img src="clean-room.png" alt="Clean Room"/>
     </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="section contact">
-    <h2>Get a Free Quote</h2>
-    <p>Email: <a href="mailto:hello@shinyclean.com">hello@shinyclean.com</a></p>
-  </section>
-
-  <script src="script.js"></script>
+  </div>
+  <script>
+    $(function(){
+      $(".twentytwenty-container").twentytwenty();
+    });
+  </script>
 </body>
 </html>
