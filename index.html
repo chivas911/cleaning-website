@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Before & After Cleaning</title>
   <style>
     body {
@@ -9,6 +10,7 @@
       background: #f3f5fa;
       font-family: Arial, sans-serif;
     }
+
     /* Centered card */
     .slider-wrapper {
       max-width: 900px;
@@ -17,35 +19,32 @@
       border-radius: 16px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
-    /* Slider container sized by the dirty image */
+
+    /* Container sized by the dirty image */
     .slider-container {
       position: relative;
       width: 100%;
       user-select: none;
       cursor: ew-resize;
     }
-    /* Both images fill container width, height auto */
+
+    /* Both images fill the container equally */
     .slider-container img {
       display: block;
       width: 100%;
       height: auto;
       pointer-events: none;
     }
-    /* Overlay container masks the clean image */
-    .slider-after {
+
+    /* Overlay the clean image and mask its right side */
+    .clean {
       position: absolute;
-      top: 0; left: 0;
-      width: 50%;      /* start at half */
-      height: 100%;
-      overflow: hidden;
+      top: 0;
+      left: 0;
+      clip-path: inset(0 50% 0 0);
     }
-    .slider-after img {
-      display: block;
-      width: 100%;
-      height: auto;
-      pointer-events: none;
-    }
-    /* Circular handle with two arrows */
+
+    /* Single circular handle with two arrows */
     .handle {
       position: absolute;
       top: 50%; left: 50%;
@@ -60,13 +59,12 @@
       justify-content: space-between;
       padding: 0 8px;
       z-index: 10;
-      cursor: ew-resize;
     }
     .handle span {
       font-size: 1.2rem;
       color: #007bff;
-      user-select: none;
       cursor: pointer;
+      user-select: none;
     }
     .handle span:hover {
       color: #0056b3;
@@ -79,10 +77,8 @@
     <div class="slider-container" id="slider">
       <!-- Dirty (before) -->
       <img src="dirty-room.png" alt="Dirty Room">
-      <!-- Clean (after) masked to 50% -->
-      <div class="slider-after" id="after">
-        <img src="clean-room.png" alt="Clean Room">
-      </div>
+      <!-- Clean (after) masked -->
+      <img src="clean-room.png" alt="Clean Room" class="clean" id="clean">
       <!-- Handle -->
       <div class="handle" id="handle">
         <span id="left">&larr;</span>
@@ -94,38 +90,35 @@
   <script>
     (function(){
       const slider = document.getElementById('slider');
-      const after  = document.getElementById('after');
+      const clean  = document.getElementById('clean');
       const handle = document.getElementById('handle');
       const left   = document.getElementById('left');
       const right  = document.getElementById('right');
-      let dragging = false;
+      let pct = 50;  // current percentage
 
-      // Move slider to pct% (0–100)
-      function setPos(pct) {
-        pct = Math.max(0, Math.min(100, pct));
-        after.style.width = pct + '%';
-        handle.style.left  = pct + '%';
+      function setSlider(newPct) {
+        pct = Math.max(0, Math.min(100, newPct));
+        // mask the right (100 - pct)%
+        clean.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+        handle.style.left = pct + '%';
       }
 
-      handle.addEventListener('mousedown', () => dragging = true);
-      document.addEventListener('mouseup',   () => dragging = false);
+      handle.addEventListener('mousedown', ()=> dragging = true);
+      document.addEventListener('mouseup',   ()=> dragging = false);
       document.addEventListener('mousemove', e => {
         if (!dragging) return;
-        const r = slider.getBoundingClientRect();
-        setPos((e.clientX - r.left) / r.width * 100);
+        const rect = slider.getBoundingClientRect();
+        setSlider((e.clientX - rect.left) / rect.width * 100);
       });
 
-      left.addEventListener('click', e => {
-        e.stopPropagation();
-        setPos((parseFloat(after.style.width)||50) - 10);
-      });
-      right.addEventListener('click', e => {
-        e.stopPropagation();
-        setPos((parseFloat(after.style.width)||50) + 10);
-      });
+      let dragging = false;
+      handle.addEventListener('mousedown', ()=> dragging = true);
 
-      // Start centered
-      setPos(50);
+      left .addEventListener('click', e => { e.stopPropagation(); setSlider(pct - 10); });
+      right.addEventListener('click', e => { e.stopPropagation(); setSlider(pct + 10); });
+
+      // initialize centered
+      setSlider(50);
     })();
   </script>
 
