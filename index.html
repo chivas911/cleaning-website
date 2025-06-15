@@ -9,68 +9,66 @@
       font-family:Arial,sans-serif;
       background:#f3f5fa;
     }
+    /* Full-bleed wrapper with rounded corners */
     .slider-wrapper {
-      width:100vw;               /* full viewport width */
-      margin:40px 0;
-      padding:0;                 /* remove side padding */
+      position: relative;
+      width: 100vw;
+      left: 50%;
+      margin-left: -50vw;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      height: 400px; /* adjust as needed */
+      margin: 40px 0;
     }
     .slider-container {
-      position:relative;
-      width:100%;                /* fill its parent */
-      height:400px;
-      overflow:hidden;
-      border-radius:0;           /* square edges if you prefer */
-      cursor:ew-resize;
-      user-select:none;
+      position: relative;
+      width: 100%;
+      height: 100%;
+      cursor: ew-resize;
+      user-select: none;
     }
     .slider-container img {
-      position:absolute;
-      top:0; left:0;
-      width:100%; height:100%;
-      object-fit:cover;
-      pointer-events:none;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      pointer-events: none;
     }
     .slider-after {
-      position:absolute;
-      top:0; left:0;
-      width:50%; height:100%;
-      overflow:hidden;
+      position: absolute;
+      top: 0; left: 0;
+      width: 50%; height: 100%;
+      overflow: hidden;
     }
     .handle {
-      position:absolute;
-      top:0;
-      left:50%;
-      transform:translateX(-50%);
-      height:100%;
-      width:50px;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      cursor:ew-resize;
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      height: 100%; width: 50px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      cursor: ew-resize;
+      z-index: 10;
     }
     .handle-line {
-      width:4px;
-      height:80%;
-      background:#fff;
-      border-radius:2px;
-      box-shadow:0 0 8px rgba(0,0,0,0.3);
+      width: 4px; height: 80%;
+      background: #fff; border-radius: 2px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.3);
     }
     .arrow {
-      font-size:1.8rem;
-      color:#007bff;
-      background:#fff;
-      border-radius:50%;
-      padding:6px 8px;
-      margin:6px 0;
-      box-shadow:0 0 6px rgba(0,0,0,0.2);
-      cursor:pointer;
-      user-select:none;
+      font-size: 1.8rem;
+      color: #007bff;
+      background: #fff;
+      border-radius: 50%;
+      padding: 6px 8px;
+      margin: 6px 0;
+      box-shadow: 0 0 6px rgba(0,0,0,0.2);
+      cursor: pointer;
+      user-select: none;
       transition: background 0.2s,color 0.2s;
     }
     .arrow:hover { background:#007bff; color:#fff; }
-    /* Optional: remove the white page gutters completely */
-    html, body { overflow-x:hidden; }
   </style>
 </head>
 <body>
@@ -97,11 +95,13 @@
       const left   = document.getElementById('left');
       const right  = document.getElementById('right');
       let dragging = false;
+
       function setPos(pct) {
         pct = Math.max(0, Math.min(100, pct));
         after.style.width = pct + '%';
         handle.style.left = pct + '%';
       }
+
       handle.addEventListener('mousedown', () => dragging = true);
       document.addEventListener('mouseup',   () => dragging = false);
       document.addEventListener('mousemove', e => {
@@ -109,14 +109,19 @@
         const r = slider.getBoundingClientRect();
         setPos((e.clientX - r.left) / r.width * 100);
       });
+
       left.addEventListener('click', e => {
         e.stopPropagation();
-        setPos((parseFloat(after.style.width)||50) - 10);
+        const cur = parseFloat(after.style.width) || 50;
+        setPos(cur - 10);
       });
-      right.addEventListener('click', e => { 
+      right.addEventListener('click', e => {
         e.stopPropagation();
-        setPos((parseFloat(after.style.width)||50) + 10);
+        const cur = parseFloat(after.style.width) || 50;
+        setPos(cur + 10);
       });
+
+      // initialize center
       setPos(50);
     })();
   </script>
