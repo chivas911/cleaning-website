@@ -4,48 +4,46 @@
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Before & After Cleaning</title>
   <style>
-    /* reset & background */
     body { margin:0; background:#f3f5fa; font-family:Arial,sans-serif; }
-    /* full-width wrapper with overflow hidden & rounded corners */
+    /* Centered, fixed-height wrapper */
     .slider-wrapper {
+      max-width: 900px;
+      height: 400px;
+      margin: 40px auto;
       position: relative;
-      width: 100vw;
-      left: 50%; margin-left: -50vw;
       overflow: hidden;
       border-radius: 16px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      /* height auto: driven by the "before" image */
     }
-    /* the relative container holds everything */
     .slider-container {
       position: relative;
       width: 100%;
-      user-select: none;
+      height: 100%;
       cursor: ew-resize;
+      user-select: none;
     }
-    /* BEFORE image: normal flow, width 100%, height auto */
-    .slider-container img.before {
-      display: block;
-      width: 100%;
-      height: auto;
+    /* Both images absolutely cover the full container */
+    .slider-container img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
       pointer-events: none;
     }
-    /* AFTER clip container: 50% width, full height, overflow hidden */
+    /* Clip the left half of the “after” image */
     .slider-after {
       position: absolute;
       top: 0; left: 0;
       width: 50%; height: 100%;
       overflow: hidden;
     }
-    /* AFTER image: double width so left half lines up perfectly */
     .slider-after img {
       position: absolute;
       top: 0; left: 0;
-      width: 200%;
-      height: auto;
-      pointer-events: none;
+      width: 100%; height: 100%;
+      object-fit: cover;
     }
-    /* circular handle in middle, vertically centered */
+    /* Single circular handle, centered vertically */
     .handle {
       position: absolute;
       top: 50%; left: 50%;
@@ -55,10 +53,13 @@
       border: 4px solid #007bff;
       border-radius: 50%;
       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       padding: 0 8px;
       z-index: 10;
       cursor: ew-resize;
+      user-select: none;
     }
     .handle span {
       font-size: 1.2rem;
@@ -73,13 +74,13 @@
 
   <div class="slider-wrapper">
     <div class="slider-container" id="slider">
-      <!-- BEFORE (dirty) -->
-      <img src="dirty-room.png" alt="Dirty Room" class="before">
-      <!-- AFTER (clean) -->
+      <!-- Dirty (before) -->
+      <img src="dirty-room.png" alt="Dirty Room" />
+      <!-- Clean (after) clipped to left 50% -->
       <div class="slider-after" id="after">
-        <img src="clean-room.png" alt="Clean Room">
+        <img src="clean-room.png" alt="Clean Room" />
       </div>
-      <!-- HANDLE with two arrows -->
+      <!-- Handle with both arrows -->
       <div class="handle" id="handle">
         <span id="left">&larr;</span>
         <span id="right">&rarr;</span>
@@ -110,16 +111,10 @@
         setPos((e.clientX - r.left) / r.width * 100);
       });
 
-      left.addEventListener('click', e => {
-        e.stopPropagation();
-        setPos((parseFloat(after.style.width)||50) - 10);
-      });
-      right.addEventListener('click', e => {
-        e.stopPropagation();
-        setPos((parseFloat(after.style.width)||50) + 10);
-      });
+      left .addEventListener('click', e => { e.stopPropagation(); setPos((parseFloat(after.style.width)||50) - 10); });
+      right.addEventListener('click', e => { e.stopPropagation(); setPos((parseFloat(after.style.width)||50) + 10); });
 
-      // initialize at center
+      // initialize at 50%
       setPos(50);
     })();
   </script>
