@@ -5,26 +5,26 @@
   <title>Emerald Cleaners</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --green: #22a678;      /* This matches your cleaning lady background */
+      --green-dark: #1c865e;
+      --white: #fff;
+      --gray-bg: #f7f8fa;
+      --gray-card: #f2f4f7;
+      --shadow: 0 2px 16px #0001;
+      --radius: 14px;
+    }
     html, body {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       width: 100vw;
       overflow-x: hidden;
-      background: #f7f8fa;
+      background: var(--gray-bg);
     }
     body {
       font-family: 'Roboto', Arial, sans-serif;
       color: #232b36;
-    }
-    :root {
-      --green: #26a47d;
-      --green-dark: #1d7f60;
-      --white: #fff;
-      --gray-bg: #f7f8fa;
-      --gray-card: #f2f4f7;
-      --shadow: 0 2px 16px #0001;
-      --radius: 14px;
     }
     /* NAV */
     .navbar {
@@ -37,9 +37,8 @@
       font-family: 'Montserrat', Arial, sans-serif;
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 999;
       max-width: 100vw;
-      overflow-x: hidden;
       min-height: 90px;
     }
     .logo {
@@ -48,8 +47,7 @@
       justify-content: center;
       height: 86px;
     }
-    .logo img,
-    .navbar-logo {
+    .logo img {
       height: 80px;
       max-height: 100px;
       width: auto;
@@ -67,7 +65,7 @@
       width: 38px;
       height: 38px;
       cursor: pointer;
-      z-index: 15;
+      z-index: 1001;
     }
     .nav-toggle span {
       display: block;
@@ -120,6 +118,7 @@
       justify-content: center;
       gap: 20px;
       max-width: 100vw;
+      min-height: 420px;
       overflow-x: hidden;
     }
     .hero-text {
@@ -158,11 +157,11 @@
       margin-top: 6px;
     }
     .btn-learn:hover {
-      background: #d6f8ed;
+      background: #c8ecd8;
       color: var(--green-dark);
     }
     .hero-graphic {
-      width: 370px;
+      width: 380px;
       min-width: 180px;
       max-width: 400px;
       margin-right: 30px;
@@ -176,6 +175,7 @@
       display: block;
       margin: 0 auto;
       border-radius: 18px;
+      box-shadow: 0 2px 24px #0002;
     }
     /* SERVICES */
     .services-section {
@@ -300,27 +300,43 @@
       position: absolute;
       top: 50%; left: 50%;
       transform: translate(-50%,-50%);
-      width: 56px; height: 56px;
+      width: 40px; height: 40px;
       background: #fff;
-      border: 3px solid var(--green);
+      border: 2px solid var(--green);
       border-radius: 50%;
       box-shadow: 0 2px 8px rgba(0,0,0,0.16);
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 0 8px;
+      justify-content: center;
       z-index: 2;
       cursor: ew-resize;
       user-select: none;
+      transition: box-shadow .15s;
     }
-    .handle span {
-      font-size: 1.4rem;
-      color: var(--green);
-      user-select: none;
-      cursor: pointer;
+    .handle:active {
+      box-shadow: 0 2px 16px #0002;
     }
-    .handle span:active {
+    .arrow-btn {
+      background: none;
+      border: none;
       color: var(--green-dark);
+      font-size: 1.1rem;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      margin: 0 3px;
+      cursor: pointer;
+      border-radius: 100%;
+      transition: background 0.13s;
+    }
+    .arrow-btn:active,
+    .arrow-btn:focus {
+      background: #e3f6ee;
+      color: var(--green);
+      outline: none;
     }
     /* BURGER MENU RESPONSIVE */
     @media (max-width: 900px) {
@@ -341,17 +357,19 @@
         min-height: 54px;
       }
       .logo { height: 46px;}
-      .logo img,
-      .navbar-logo {
+      .logo img {
         height: 44px;
         max-height: 52px;
       }
       .nav-toggle {
         display: flex;
+        position: absolute;
+        right: 16px;
+        top: 18px;
       }
       .nav-links {
         position: absolute;
-        top: 70px;
+        top: 100%;
         left: 0;
         width: 100vw;
         flex-direction: column;
@@ -386,8 +404,7 @@
     }
     @media (max-width: 600px) {
       .slider-wrapper { height: 150px; }
-      .handle { width: 38px; height: 38px; padding: 0 5px; }
-      .handle span { font-size: 1rem; }
+      .handle { width: 32px; height: 32px; }
       .hero-graphic { max-width: 99vw; width: 95vw;}
       .hero-text { padding: 0;}
     }
@@ -436,21 +453,21 @@
     <div class="services-list">
       <div class="service-card">
         <div class="service-icon">
-          <svg width="36" height="36" fill="none" stroke="#26a47d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16.5 18 7l14 9.5"/><path d="M6 18.5v10a1 1 0 0 0 1 1h22a1 1 0 0 0 1-1v-10"/><path d="M14 29V21h8v8"/></svg>
+          <svg width="36" height="36" fill="none" stroke="#22a678" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16.5 18 7l14 9.5"/><path d="M6 18.5v10a1 1 0 0 0 1 1h22a1 1 0 0 0 1-1v-10"/><path d="M14 29V21h8v8"/></svg>
         </div>
         <h3>House Cleaning</h3>
         <p>Thorough cleaning of every room in your home</p>
       </div>
       <div class="service-card">
         <div class="service-icon">
-          <svg width="36" height="36" fill="none" stroke="#26a47d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="22" width="32" height="8" rx="2"/><path d="M8 22v-6a6 6 0 1 1 12 0v6"/><path d="M28 22v-4a4 4 0 0 1 8 0v4"/></svg>
+          <svg width="36" height="36" fill="none" stroke="#22a678" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="22" width="32" height="8" rx="2"/><path d="M8 22v-6a6 6 0 1 1 12 0v6"/><path d="M28 22v-4a4 4 0 0 1 8 0v4"/></svg>
         </div>
         <h3>Deep Cleaning</h3>
         <p>Intensive cleaning to remove dirt &amp; grime</p>
       </div>
       <div class="service-card">
         <div class="service-icon">
-          <svg width="36" height="36" fill="none" stroke="#26a47d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 32h24M6 32V19a7 7 0 0 1 14 0v13"/><circle cx="24" cy="32" r="4"/></svg>
+          <svg width="36" height="36" fill="none" stroke="#22a678" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 32h24M6 32V19a7 7 0 0 1 14 0v13"/><circle cx="24" cy="32" r="4"/></svg>
         </div>
         <h3>Move-In/Move-Out</h3>
         <p>Cleaning services for your move-in or move-out needs</p>
@@ -466,8 +483,12 @@
         <img src="dirty-room.png" alt="Dirty Room">
         <img src="clean-room.png" alt="Clean Room" class="clean" id="clean">
         <div class="handle" id="handle">
-          <span id="left">&larr;</span>
-          <span id="right">&rarr;</span>
+          <button type="button" class="arrow-btn" id="left" aria-label="Slide Left">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M12.7 15.3a1 1 0 0 1-1.4 0l-5-5a1 1 0 0 1 0-1.4l5-5a1 1 0 1 1 1.4 1.4L8.42 10l4.3 4.3a1 1 0 0 1 0 1.4z" fill="currentColor"/></svg>
+          </button>
+          <button type="button" class="arrow-btn" id="right" aria-label="Slide Right">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M7.3 15.3a1 1 0 0 0 1.4 0l5-5a1 1 0 0 0 0-1.4l-5-5a1 1 0 0 0-1.4 1.4L11.58 10l-4.3 4.3a1 1 0 0 0 0 1.4z" fill="currentColor"/></svg>
+          </button>
         </div>
       </div>
     </div>
