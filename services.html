@@ -24,11 +24,16 @@
     }
     /* NAVBAR */
     .navbar {
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       padding: 12px 40px;
-      background: var(--white); box-shadow: var(--shadow);
+      background: var(--white);
+      box-shadow: var(--shadow);
       font-family: 'Montserrat', Arial, sans-serif;
-      position: sticky; top: 0; z-index: 999;
+      position: sticky;
+      top: 0;
+      z-index: 999;
     }
     .navbar .logo img { height: 80px; }
     .nav-links { display: flex; gap: 36px; align-items: center; }
@@ -63,12 +68,15 @@
       line-height: 1.6;
     }
 
-    /* SLIDER (full image) */
+    /* SLIDER (show full image) */
     .slider-wrapper {
-      position: relative; width: 100%; height: 450px;
+      position: relative;
+      width: 100%; height: 450px;
       max-width: 800px; margin: 32px auto;
-      border-radius: var(--radius); overflow: hidden;
-      box-shadow: var(--shadow); background: #eafcf5;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #eafcf5;
     }
     .slider-container {
       position: relative; width: 100%; height: 100%;
@@ -81,15 +89,17 @@
       pointer-events: none;
     }
     .slider-container .clean {
-      clip-path: inset(0 50% 0 0); z-index: 1;
+      clip-path: inset(0 50% 0 0);
+      z-index: 1;
     }
     .slider-container .handle {
       position: absolute; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       width: 40px; height: 40px;
       background: #fff; border: 2px solid var(--green);
-      border-radius: 50%; display: flex; align-items: center;
-      justify-content: space-between; padding: 0 4px;
+      border-radius: 50%; display: flex;
+      align-items: center; justify-content: space-between;
+      padding: 0 4px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.16);
       cursor: ew-resize; z-index: 2;
     }
@@ -161,7 +171,7 @@
     <p>From routine home cleans to specialized treatments, Emerald Cleaners has you covered. Swipe each slider to see before &amp; after results.</p>
   </section>
 
-  <!-- MAIN SERVICES -->
+  <!-- 1. House Cleaning -->
   <div class="service-block">
     <h2>1. House Cleaning</h2>
     <p>Regular maintenance cleans: dusting, vacuuming, mopping, kitchen &amp; bathroom surfaces.</p>
@@ -170,16 +180,26 @@
         <img src="dirty-house.png" alt="Dirty House">
         <img src="clean-house.png" alt="Clean House" class="clean" id="house-clean">
         <div class="handle" id="house-handle">
-          <button class="arrow-btn" id="house-left" aria-label="Left">&larr;</button>
-          <button class="arrow-btn" id="house-right" aria-label="Right">&rarr;</button>
+          <button class="arrow-btn" id="house-left">&larr;</button>
+          <button class="arrow-btn" id="house-right">&rarr;</button>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- 2. Deep Cleaning (updated description) -->
   <div class="service-block">
     <h2>2. Deep Cleaning</h2>
-    <p>Intensive one-off cleans: baseboards, inside appliances, grout scrubbing, and more.</p>
+    <p style="max-width:700px; margin:0 auto 24px; text-align:left;">
+      A comprehensive one-off overhaul of every nook and cranny:
+      <ul style="list-style:disc; padding-left:1.5em; margin-top:0;">
+        <li>Degreasing kitchen: oven, hob, extractor fan & cupboards</li>
+        <li>Sanitising bathroom: tile & grout scrubbing, shower screens & seals</li>
+        <li>Dusting and wiping skirting boards, door frames, window sills & light fittings</li>
+        <li>Vacuuming & steam-cleaning carpets and upholstery</li>
+        <li>Deep sanitisation of touch points: handles, switches & rails</li>
+      </ul>
+    </p>
     <div class="slider-wrapper">
       <div class="slider-container" id="deep-slider">
         <img src="dirty-deep.png" alt="Dirty Deep Clean">
@@ -192,9 +212,10 @@
     </div>
   </div>
 
+  <!-- 3. Move-In / Move-Out Cleaning -->
   <div class="service-block">
     <h2>3. Move-In / Move-Out Cleaning</h2>
-    <p>Thorough prep or final cleans for rentals, real estate turnarounds, and moving households.</p>
+    <p>Thorough prep or final cleans for rentals, real estate turnarounds & moving households.</p>
     <div class="slider-wrapper">
       <div class="slider-container" id="move-slider">
         <img src="dirty-move.png" alt="Dirty Move In/Out">
@@ -211,9 +232,10 @@
   <div class="additional-services">
     <h2>Additional Services</h2>
     <div class="additional-grid">
+      <!-- Carpet Cleaning -->
       <div class="additional-item">
         <h3>Carpet Cleaning</h3>
-        <p>Hot-water extraction and stain removal for plush, hygienic carpets.</p>
+        <p>Hot-water extraction & stain removal for plush, hygienic carpets.</p>
         <div class="slider-wrapper">
           <div class="slider-container" id="carpet-slider">
             <img src="dirty-carpet.png" alt="Dirty Carpet">
@@ -225,9 +247,10 @@
           </div>
         </div>
       </div>
+      <!-- Window Cleaning -->
       <div class="additional-item">
         <h3>Window Cleaning</h3>
-        <p>Inside &amp; outside glass, tracks, and sills—streak-free shine.</p>
+        <p>Inside &amp; outside glass, tracks & sills—streak-free shine.</p>
         <div class="slider-wrapper">
           <div class="slider-container" id="windows-slider">
             <img src="dirty-windows.png" alt="Dirty Windows">
@@ -239,9 +262,10 @@
           </div>
         </div>
       </div>
+      <!-- Oven Cleaning -->
       <div class="additional-item">
         <h3>Oven Cleaning</h3>
-        <p>Degreasing inside ovens, hobs, griddles, and range hoods.</p>
+        <p>Degreasing ovens, hobs, griddles & range hoods.</p>
         <div class="slider-wrapper">
           <div class="slider-container" id="oven-slider">
             <img src="dirty-oven.png" alt="Dirty Oven">
@@ -253,6 +277,7 @@
           </div>
         </div>
       </div>
+      <!-- Pressure Washing -->
       <div class="additional-item">
         <h3>Pressure Washing</h3>
         <p>Driveways, patios, decking—blast away built-up dirt.</p>
@@ -272,42 +297,42 @@
 
   <!-- SLIDER SCRIPT -->
   <script>
-    function initSlider(id) {
+    ['house','deep','move','carpet','windows','oven','pressure'].forEach(id => {
       const slider = document.getElementById(id + '-slider');
-      const clean  = document.getElementById(id + '-clean');
-      const handle = document.getElementById(id + '-handle');
-      const left   = document.getElementById(id + '-left');
-      const right  = document.getElementById(id + '-right');
-      let pct = 50, drag = false;
+      const cleanEl = document.getElementById(id + '-clean');
+      const handle  = document.getElementById(id + '-handle');
+      const leftBtn = document.getElementById(id + '-left');
+      const rightBtn= document.getElementById(id + '-right');
+      let pct = 50, dragging = false;
 
       function setPct(p) {
         pct = Math.max(0, Math.min(100, p));
-        clean.style.clipPath = `inset(0 ${100-pct}% 0 0)`;
+        cleanEl.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
         handle.style.left = pct + '%';
       }
 
-      handle.addEventListener('mousedown',()=>drag=true);
-      document.addEventListener('mouseup',   ()=>drag=false);
-      document.addEventListener('mousemove', e=>{
-        if(!drag) return;
+      handle.addEventListener('mousedown', () => dragging = true);
+      document.addEventListener('mouseup', () => dragging = false);
+      document.addEventListener('mousemove', e => {
+        if (!dragging) return;
         const r = slider.getBoundingClientRect();
-        setPct((e.clientX - r.left)/r.width*100);
+        setPct((e.clientX - r.left) / r.width * 100);
       });
-      handle.addEventListener('touchstart',e=>{drag=true; e.preventDefault();});
-      document.addEventListener('touchend', ()=>drag=false);
-      document.addEventListener('touchmove',e=>{
-        if(!drag) return;
+
+      handle.addEventListener('touchstart', e => { dragging = true; e.preventDefault(); });
+      document.addEventListener('touchend', () => dragging = false);
+      document.addEventListener('touchmove', e => {
+        if (!dragging) return;
         const t = e.touches[0], r = slider.getBoundingClientRect();
-        setPct((t.clientX - r.left)/r.width*100);
+        setPct((t.clientX - r.left) / r.width * 100);
         e.preventDefault();
       });
-      left.addEventListener('click', ()=>setPct(pct-10));
-      right.addEventListener('click',()=>setPct(pct+10));
-      setPct(50);
-    }
 
-    ['house','deep','move','carpet','windows','oven','pressure']
-      .forEach(initSlider);
+      leftBtn.addEventListener('click', () => setPct(pct - 10));
+      rightBtn.addEventListener('click', () => setPct(pct + 10));
+
+      setPct(50);
+    });
   </script>
 </body>
 </html>
