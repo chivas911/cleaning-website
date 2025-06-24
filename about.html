@@ -128,6 +128,15 @@
       margin: 0 auto 22px auto;
       line-height: 1.6;
     }
+    /* Team image */
+    .about-team-img {
+      display: block;
+      margin: 30px auto 30px auto;
+      max-width: 420px;
+      width: 95%;
+      border-radius: 18px;
+      box-shadow: 0 2px 18px #0002;
+    }
     .about-section {
       background: var(--white);
       border-radius: var(--radius);
@@ -204,6 +213,7 @@
       .about-section { padding: 22px 8px 24px 8px; }
       .features-list { flex-direction: column; align-items: center; gap: 14px; }
       .feature { width: 98%; }
+      .about-team-img { max-width: 98vw;}
     }
     @media (max-width: 700px) {
       .navbar {
@@ -281,6 +291,11 @@
     <p>We’re passionate about creating healthy, beautiful spaces for homes and businesses across Ireland.  
     Our expert cleaning team is dedicated to quality, reliability, and the highest standards—every single visit.</p>
   </section>
+
+  <!-- Team illustration -->
+  <div style="text-align:center;">
+    <img src="team.png" alt="Emerald Cleaners Team Illustration" class="about-team-img">
+  </div>
 
   <div class="about-section">
     <h2>Our Mission</h2>
