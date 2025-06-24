@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Services | Emerald Cleaners</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <style>
@@ -10,17 +11,16 @@
       --green-dark: #1c865e;
       --white: #fff;
       --gray-bg: #f7f8fa;
-      --gray-card: #f2f4f7;
       --shadow: 0 2px 16px #0001;
       --radius: 14px;
     }
     *, *::before, *::after { box-sizing: border-box; }
     body, html {
-      margin: 0; padding: 0;
-      width: 100vw; overflow-x: hidden;
-      font-family: 'Roboto', Arial, sans-serif;
-      background: var(--gray-bg);
-      color: #232b36;
+      margin:0; padding:0;
+      width:100vw; overflow-x:hidden;
+      font-family:'Roboto', Arial, sans-serif;
+      background:var(--gray-bg);
+      color:#232b36;
     }
     /* NAVBAR */
     .navbar {
@@ -30,26 +30,27 @@
       font-family:'Montserrat', Arial, sans-serif;
       position:sticky; top:0; z-index:999;
     }
-    .navbar .logo img { height:80px; }
+    .logo img { height:80px; }
     .nav-links { display:flex; gap:36px; align-items:center; }
     .nav-links a {
-      text-decoration:none; color:#232b36; font-weight:500;
-      transition: color .16s;
+      color:#232b36; text-decoration:none; font-weight:500;
+      transition:color .16s;
     }
     .nav-links a.active,
-    .nav-links a:hover { color:var(--green); font-weight:bold; }
+    .nav-links a:hover {
+      color:var(--green); font-weight:bold;
+    }
     .btn-quote {
       background:var(--green); color:#fff; border:none; border-radius:8px;
       padding:10px 22px; font-weight:bold; cursor:pointer;
-      transition: background .2s;
+      transition:background .2s;
     }
     .btn-quote:hover { background:var(--green-dark); }
 
     /* HERO */
     .services-hero {
       background:var(--green); color:#fff;
-      padding:80px 20px 40px;
-      text-align:center;
+      padding:80px 20px 40px; text-align:center;
     }
     .services-hero h1 {
       margin:0 0 12px;
@@ -61,28 +62,12 @@
       line-height:1.6;
     }
 
-    /* SERVICE BLOCK */
-    .service-block {
-      max-width:1000px;
-      margin:60px auto;
-      padding:0 20px;
-    }
-    .service-block h2 {
-      font-family:'Montserrat',Arial,sans-serif;
-      font-size:2rem; color:var(--green);
-      text-align:center; margin-bottom:16px;
-    }
-    .service-block p {
-      text-align:center; font-size:1rem; margin-bottom:28px;
-    }
-
-    /* SLIDER COMMON */
+    /* SLIDER STYLES (same as Home) */
     .slider-wrapper {
       position:relative; width:100%; height:300px;
+      max-width:800px; margin:32px auto;
       border-radius:var(--radius); overflow:hidden;
       box-shadow:var(--shadow); background:#eafcf5;
-      margin:0 auto;
-      max-width:800px;
     }
     .slider-container {
       position:relative; width:100%; height:100%;
@@ -94,16 +79,16 @@
       pointer-events:none;
     }
     .slider-container .clean {
-      clip-path: inset(0 50% 0 0);
-      z-index:1;
+      clip-path: inset(0 50% 0 0); z-index:1;
     }
     .slider-container .handle {
       position:absolute; top:50%; left:50%;
       transform:translate(-50%,-50%);
-      width:40px; height:40px; background:#fff;
-      border:2px solid var(--green); border-radius:50%;
-      display:flex; align-items:center; justify-content:space-between;
-      padding:0 4px; box-shadow:0 2px 8px rgba(0,0,0,0.16);
+      width:40px; height:40px;
+      background:#fff; border:2px solid var(--green);
+      border-radius:50%; display:flex; align-items:center;
+      justify-content:space-between; padding:0 4px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.16);
       cursor:ew-resize; z-index:2;
     }
     .slider-container .handle:active {
@@ -116,31 +101,6 @@
     }
     .arrow-btn:active { color:var(--green); }
 
-    /* ADDITIONAL SERVICES GRID */
-    .additional-services {
-      max-width:1000px; margin:60px auto 80px;
-      padding:0 20px;
-    }
-    .additional-services h2 {
-      font-family:'Montserrat',Arial,sans-serif;
-      font-size:2rem; color:var(--green);
-      text-align:center; margin-bottom:36px;
-    }
-    .additional-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:40px;
-    }
-    .additional-item h3 {
-      font-size:1.2rem; margin-bottom:12px;
-      text-align:center; color:#232b36;
-    }
-    .additional-item p {
-      text-align:center; font-size:0.95rem;
-      margin-bottom:16px;
-    }
-
-    /* RESPONSIVE */
     @media(max-width:700px) {
       .slider-wrapper { height:200px; }
       .services-hero { padding-bottom:30px; }
@@ -163,166 +123,60 @@
 
   <!-- HERO -->
   <section class="services-hero">
-    <h1>Our Services</h1>
-    <p>From routine home cleans to specialized treatments, Emerald Cleaners has you covered.  
-       Explore our main services below—and swipe to see before & after results.</p>
+    <h1>House Cleaning</h1>
+    <p>Regular maintenance cleans: dusting, vacuuming, mopping, kitchen & bathroom surfaces.</p>
   </section>
 
-  <!-- MAIN SERVICES -->
-  <div class="service-block" id="main-services">
-    <!-- 1. House Cleaning -->
-    <h2>House Cleaning</h2>
-    <p>Regular maintenance cleans: dusting, vacuuming, mopping, kitchen & bathroom surfaces.</p>
-    <div class="slider-wrapper">
-      <div class="slider-container">
-        <img src="dirty-house.png" alt="Dirty House">
-        <img src="clean-house.png" alt="Clean House" class="clean">
-        <div class="handle">
-          <button class="arrow-btn arrow-left">&larr;</button>
-          <button class="arrow-btn arrow-right">&rarr;</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- 2. Deep Cleaning -->
-    <h2>Deep Cleaning</h2>
-    <p>Intensive one-off cleans: baseboards, window sills, inside appliances, grout scrubbing.</p>
-    <div class="slider-wrapper">
-      <div class="slider-container">
-        <img src="dirty-deep.png" alt="Dirty Deep Clean">
-        <img src="clean-deep.png" alt="Clean Deep Clean" class="clean">
-        <div class="handle">
-          <button class="arrow-btn arrow-left">&larr;</button>
-          <button class="arrow-btn arrow-right">&rarr;</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- 3. Move-In / Move-Out -->
-    <h2>Move-In / Move-Out Cleaning</h2>
-    <p>Thorough prep or final cleans for rentals, real estate turnarounds, and moving households.</p>
-    <div class="slider-wrapper">
-      <div class="slider-container">
-        <img src="dirty-move.png" alt="Dirty Move In/Out">
-        <img src="clean-move.png" alt="Clean Move In/Out" class="clean">
-        <div class="handle">
-          <button class="arrow-btn arrow-left">&larr;</button>
-          <button class="arrow-btn arrow-right">&rarr;</button>
-        </div>
+  <!-- TEST SLIDER -->
+  <div class="slider-wrapper">
+    <div class="slider-container" id="house-test-slider">
+      <img src="dirty-house.png" alt="Dirty House">
+      <img src="clean-house.png" alt="Clean House" class="clean" id="house-test-clean">
+      <div class="handle" id="house-test-handle">
+        <button class="arrow-btn" id="house-test-left" aria-label="Slide Left">&larr;</button>
+        <button class="arrow-btn" id="house-test-right" aria-label="Slide Right">&rarr;</button>
       </div>
     </div>
   </div>
 
-  <!-- ADDITIONAL SERVICES -->
-  <div class="additional-services">
-    <h2>Additional Services</h2>
-    <div class="additional-grid">
-      <!-- Carpet Cleaning -->
-      <div class="additional-item">
-        <h3>Carpet Cleaning</h3>
-        <p>Hot-water extraction and stain removal to restore plush, hygienic carpets.</p>
-        <div class="slider-wrapper">
-          <div class="slider-container">
-            <img src="dirty-carpet.png" alt="Dirty Carpet">
-            <img src="clean-carpet.png" alt="Clean Carpet" class="clean">
-            <div class="handle">
-              <button class="arrow-btn arrow-left">&larr;</button>
-              <button class="arrow-btn arrow-right">&rarr;</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Window Cleaning -->
-      <div class="additional-item">
-        <h3>Window Cleaning</h3>
-        <p>Inside &amp; outside glass, tracks and sills—streak-free shine guaranteed.</p>
-        <div class="slider-wrapper">
-          <div class="slider-container">
-            <img src="dirty-windows.png" alt="Dirty Windows">
-            <img src="clean-windows.png" alt="Clean Windows" class="clean">
-            <div class="handle">
-              <button class="arrow-btn arrow-left">&larr;</button>
-              <button class="arrow-btn arrow-right">&rarr;</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Oven Cleaning -->
-      <div class="additional-item">
-        <h3>Oven Cleaning</h3>
-        <p>Degreasing and de-carbonizing inside ovens, hobs, griddles and range hoods.</p>
-        <div class="slider-wrapper">
-          <div class="slider-container">
-            <img src="dirty-oven.png" alt="Dirty Oven">
-            <img src="clean-oven.png" alt="Clean Oven" class="clean">
-            <div class="handle">
-              <button class="arrow-btn arrow-left">&larr;</button>
-              <button class="arrow-btn arrow-right">&rarr;</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Pressure Washing -->
-      <div class="additional-item">
-        <h3>Pressure Washing</h3>
-        <p>Driveways, patios, decking and exterior surfaces—blast away built-up dirt.</p>
-        <div class="slider-wrapper">
-          <div class="slider-container">
-            <img src="dirty-pressure.png" alt="Dirty Pressure Wash">
-            <img src="clean-pressure.png" alt="Clean Pressure Wash" class="clean">
-            <div class="handle">
-              <button class="arrow-btn arrow-left">&larr;</button>
-              <button class="arrow-btn arrow-right">&rarr;</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SLIDER & MENU SCRIPT -->
+  <!-- SLIDER SCRIPT -->
   <script>
-    // Initialize all sliders
-    document.querySelectorAll('.slider-container').forEach(slider => {
-      const cleanImg = slider.querySelector('.clean');
-      const handle   = slider.querySelector('.handle');
-      const leftBtn  = slider.querySelector('.arrow-left');
-      const rightBtn = slider.querySelector('.arrow-right');
-      let pct = 50, dragging = false;
+  (function(){
+    const s = document.getElementById('house-test-slider');
+    const clean = document.getElementById('house-test-clean');
+    const hndl  = document.getElementById('house-test-handle');
+    const left  = document.getElementById('house-test-left');
+    const right = document.getElementById('house-test-right');
+    let pct=50, drag=false;
 
-      function setSlider(p) {
-        pct = Math.max(0,Math.min(100,p));
-        cleanImg.style.clipPath = `inset(0 ${100-pct}% 0 0)`;
-        handle.style.left = pct + '%';
-      }
+    function setPct(p){
+      pct = Math.max(0,Math.min(100,p));
+      clean.style.clipPath = `inset(0 ${100-pct}% 0 0)`;
+      hndl.style.left = pct+'%';
+    }
 
-      // Mouse events
-      handle.addEventListener('mousedown', () => dragging = true);
-      document.addEventListener('mouseup',   () => dragging = false);
-      document.addEventListener('mousemove', e => {
-        if (!dragging) return;
-        const r = slider.getBoundingClientRect();
-        setSlider((e.clientX - r.left)/r.width*100);
-      });
-      // Touch events
-      handle.addEventListener('touchstart', e => { dragging = true; e.preventDefault(); });
-      document.addEventListener('touchend',   () => dragging = false);
-      document.addEventListener('touchmove',  e => {
-        if (!dragging) return;
-        const t = e.touches[0];
-        const r = slider.getBoundingClientRect();
-        setSlider((t.clientX - r.left)/r.width*100);
-        e.preventDefault();
-      });
-      // Arrow buttons
-      leftBtn.addEventListener('click', () => setSlider(pct - 10));
-      rightBtn.addEventListener('click', () => setSlider(pct + 10));
-
-      setSlider(50);
+    hndl.addEventListener('mousedown',()=>drag=true);
+    document.addEventListener('mouseup',()=>drag=false);
+    document.addEventListener('mousemove', e=>{
+      if(!drag) return;
+      const r=s.getBoundingClientRect();
+      setPct((e.clientX-r.left)/r.width*100);
     });
 
-    // (Optional) Sticky active link
-    document.querySelector('.nav-links a[href$="services.html"]').classList.add('active');
+    hndl.addEventListener('touchstart',e=>{ drag=true; e.preventDefault(); });
+    document.addEventListener('touchend',()=>drag=false);
+    document.addEventListener('touchmove', e=>{
+      if(!drag) return;
+      const t=e.touches[0], r=s.getBoundingClientRect();
+      setPct((t.clientX-r.left)/r.width*100);
+      e.preventDefault();
+    });
+
+    left .addEventListener('click',()=>setPct(pct-10));
+    right.addEventListener('click',()=>setPct(pct+10));
+    setPct(50);
+  })();
   </script>
+
 </body>
 </html>
