@@ -24,29 +24,18 @@
     }
     /* NAVBAR */
     .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 40px;
-      background: var(--white);
-      box-shadow: var(--shadow);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 40px; background: var(--white); box-shadow: var(--shadow);
       font-family: 'Montserrat', Arial, sans-serif;
-      position: sticky;
-      top: 0; z-index: 999;
+      position: sticky; top: 0; z-index: 999;
     }
     .navbar .logo img { height: 80px; }
     .nav-links { display: flex; gap: 36px; align-items: center; }
-    .nav-links a {
-      color: #232b36; text-decoration: none; font-weight: 500;
-      transition: color .16s;
-    }
-    .nav-links a.active,
-    .nav-links a:hover { color: var(--green); font-weight: bold; }
+    .nav-links a { color: #232b36; text-decoration: none; font-weight: 500; transition: color .16s; }
+    .nav-links a.active, .nav-links a:hover { color: var(--green); font-weight: bold; }
     .btn-quote {
-      background: var(--green); color: var(--white);
-      border: none; border-radius: 8px;
-      padding: 10px 22px; font-weight: bold; cursor: pointer;
-      transition: background .2s;
+      background: var(--green); color: var(--white); border: none; border-radius: 8px;
+      padding: 10px 22px; font-weight: bold; cursor: pointer; transition: background .2s;
     }
     .btn-quote:hover { background: var(--green-dark); }
 
@@ -65,10 +54,10 @@
       line-height: 1.6;
     }
 
-    /* SLIDER STYLES */
+    /* GENERAL SLIDER STYLES */
     .slider-wrapper {
       position: relative; width: 100%; height: 450px;
-      max-width: 800px; margin: 32px auto;
+      max-width: 800px; margin: 24px auto;
       border-radius: var(--radius); overflow: hidden;
       box-shadow: var(--shadow); background: #eafcf5;
     }
@@ -78,8 +67,8 @@
     }
     .slider-container img {
       position: absolute; top: 0; left: 0;
-      width: 100%; height: 100%;
-      object-fit: contain; pointer-events: none;
+      width: 100%; height: 100%; object-fit: contain;
+      pointer-events: none;
     }
     .slider-container .clean {
       clip-path: inset(0 50% 0 0); z-index: 1;
@@ -109,8 +98,11 @@
       font-size: 2rem; color: var(--green);
       margin-bottom: 8px; text-align: center;
     }
+    .service-block .price {
+      text-align: center; font-size: 1.1rem; margin-bottom: 16px;
+    }
     .service-block p {
-      text-align: center; font-size: 1rem; margin-bottom: 24px;
+      text-align: center; font-size: 1rem; margin-bottom: 16px;
     }
     .service-block ul {
       list-style: disc; padding-left: 1.5em;
@@ -135,6 +127,9 @@
     .additional-item h3 {
       font-size: 1.2rem; margin-bottom: 12px;
       text-align: center; color: #232b36;
+    }
+    .additional-item .price {
+      text-align: center; font-size: 1rem; margin-bottom: 12px;
     }
     .additional-item p {
       text-align: center; font-size: .95rem; margin-bottom: 16px;
@@ -163,12 +158,13 @@
   <!-- HERO -->
   <section class="services-hero">
     <h1>Our Services</h1>
-    <p>From routine home cleans to specialized treatments, Emerald Cleaners has you covered. Swipe each slider to see before &amp; after magic! ✨</p>
+    <p>From routine home cleans to specialised treatments, Emerald Cleaners has you covered. Swipe each slider to see before &amp; after magic! ✨</p>
   </section>
 
   <!-- 1. House Cleaning -->
   <div class="service-block">
     <h2>1. House Cleaning</h2>
+    <div class="price">💷 Starting from €15 / hour</div>
     <p>🧹🏠 Keep your home fresh and spotless with our regular cleans:</p>
     <ul>
       <li>✨ Dusting all surfaces, skirting boards & light fittings</li>
@@ -192,7 +188,8 @@
   <!-- 2. Deep Cleaning -->
   <div class="service-block">
     <h2>2. Deep Cleaning</h2>
-    <p>A comprehensive one-off overhaul of every nook and cranny:</p>
+    <div class="price">💷 From €200 flat (3-bed standard) or €25 / hour</div>
+    <p>🍽️🛁 A comprehensive one-off overhaul of every nook and cranny:</p>
     <ul>
       <li>🍳 Degreasing kitchen: oven, hob, extractor fan & cupboards</li>
       <li>🚿 Sanitising bathroom: tile & grout scrubbing, shower screens & seals</li>
@@ -215,10 +212,11 @@
   <!-- 3. Move-In / Move-Out Cleaning -->
   <div class="service-block">
     <h2>3. Move-In / Move-Out Cleaning</h2>
+    <div class="price">💷 Starting from €165 (1-bed package)</div>
     <p>🚚🏠 Preparing properties for new occupants or leaving them spotless:</p>
     <ul>
       <li>🗄️ Cleaning inside cabinets, wardrobes & storage areas</li>
-      <li>🛋️ Vacuuming & spot-treatment of carpets, steps & hallways</li>
+      <li>🛋️ Vacuuming & spot-treating carpets, steps & hallways</li>
       <li>🧽 Scrubbing floors, walls & skirting for rental inspections</li>
       <li>🚪 Wiping doors, frames, handles & light switches</li>
       <li>🔧 Optional extras: window cleaning, carpet shampoo & oven cleans</li>
@@ -239,10 +237,11 @@
   <div class="additional-services">
     <h2>Additional Services</h2>
     <div class="additional-grid">
-      <!-- Carpet Cleaning -->
+
       <div class="additional-item">
         <h3>🧽 Carpet Cleaning</h3>
-        <p>Hot-water extraction, stain removal & deodorising for a fresh, plush carpet.</p>
+        <div class="price">💷 From €65 per room</div>
+        <p>Deep hot-water extraction & stain removal for plush, hygienic carpets.</p>
         <div class="slider-wrapper">
           <div class="slider-container" id="carpet-slider">
             <img src="dirty-carpet.png" alt="Dirty Carpet">
@@ -254,9 +253,10 @@
           </div>
         </div>
       </div>
-      <!-- Window Cleaning -->
+
       <div class="additional-item">
         <h3>🪟 Window Cleaning</h3>
+        <div class="price">💷 From €70 (up to 10 windows)</div>
         <p>Streak-free shine inside & out, including frames, tracks & sills.</p>
         <div class="slider-wrapper">
           <div class="slider-container" id="windows-slider">
@@ -269,9 +269,10 @@
           </div>
         </div>
       </div>
-      <!-- Oven Cleaning -->
+
       <div class="additional-item">
         <h3>🍳 Oven Cleaning</h3>
+        <div class="price">💷 From €50 per oven</div>
         <p>Degrease & de-carbonise inside ovens, hobs & range hoods for a spotless finish.</p>
         <div class="slider-wrapper">
           <div class="slider-container" id="oven-slider">
@@ -284,9 +285,10 @@
           </div>
         </div>
       </div>
-      <!-- Pressure Washing -->
+
       <div class="additional-item">
         <h3>🚿 Pressure Washing</h3>
+        <div class="price">💷 From €100</div>
         <p>Blast away dirt from driveways, patios, decking & exterior walls.</p>
         <div class="slider-wrapper">
           <div class="slider-container" id="pressure-slider">
@@ -299,6 +301,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
 
@@ -306,11 +309,11 @@
   <script>
     ['house','deep','move','carpet','windows','oven','pressure']
       .forEach(id => {
-        const slider = document.getElementById(id+'-slider');
-        const clean  = document.getElementById(id+'-clean');
-        const handle = document.getElementById(id+'-handle');
-        const left   = document.getElementById(id+'-left');
-        const right  = document.getElementById(id+'-right');
+        const slider = document.getElementById(id + '-slider');
+        const clean  = document.getElementById(id + '-clean');
+        const handle = document.getElementById(id + '-handle');
+        const left   = document.getElementById(id + '-left');
+        const right  = document.getElementById(id + '-right');
         let pct = 50, dragging = false;
         function setPct(p) {
           pct = Math.max(0, Math.min(100, p));
@@ -332,8 +335,8 @@
           setPct((t.clientX - r.left)/r.width*100);
           e.preventDefault();
         });
-        left.addEventListener('click', () => setPct(pct-10));
-        right.addEventListener('click', () => setPct(pct+10));
+        left.addEventListener('click', () => setPct(pct - 10));
+        right.addEventListener('click', () => setPct(pct + 10));
         setPct(50);
       });
   </script>
