@@ -32,8 +32,7 @@
       box-shadow: var(--shadow);
       font-family: 'Montserrat', Arial, sans-serif;
       position: sticky;
-      top: 0;
-      z-index: 999;
+      top: 0; z-index: 999;
     }
     .navbar .logo img { height: 80px; }
     .nav-links { display: flex; gap: 36px; align-items: center; }
@@ -42,9 +41,7 @@
       transition: color .16s;
     }
     .nav-links a.active,
-    .nav-links a:hover {
-      color: var(--green); font-weight: bold;
-    }
+    .nav-links a:hover { color: var(--green); font-weight: bold; }
     .btn-quote {
       background: var(--green); color: var(--white);
       border: none; border-radius: 8px;
@@ -68,15 +65,12 @@
       line-height: 1.6;
     }
 
-    /* SLIDER (show full image) */
+    /* SLIDER STYLES */
     .slider-wrapper {
-      position: relative;
-      width: 100%; height: 450px;
+      position: relative; width: 100%; height: 450px;
       max-width: 800px; margin: 32px auto;
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      background: #eafcf5;
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow); background: #eafcf5;
     }
     .slider-container {
       position: relative; width: 100%; height: 100%;
@@ -85,22 +79,18 @@
     .slider-container img {
       position: absolute; top: 0; left: 0;
       width: 100%; height: 100%;
-      object-fit: contain;
-      pointer-events: none;
+      object-fit: contain; pointer-events: none;
     }
     .slider-container .clean {
-      clip-path: inset(0 50% 0 0);
-      z-index: 1;
+      clip-path: inset(0 50% 0 0); z-index: 1;
     }
     .slider-container .handle {
       position: absolute; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      width: 40px; height: 40px;
-      background: #fff; border: 2px solid var(--green);
-      border-radius: 50%; display: flex;
-      align-items: center; justify-content: space-between;
-      padding: 0 4px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.16);
+      width: 40px; height: 40px; background: #fff;
+      border: 2px solid var(--green); border-radius: 50%;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.16);
       cursor: ew-resize; z-index: 2;
     }
     .arrow-btn {
@@ -121,6 +111,11 @@
     }
     .service-block p {
       text-align: center; font-size: 1rem; margin-bottom: 24px;
+    }
+    .service-block ul {
+      list-style: disc; padding-left: 1.5em;
+      max-width: 700px; margin: 0 auto 24px;
+      text-align: left;
     }
 
     /* ADDITIONAL SERVICES */
@@ -145,7 +140,7 @@
       text-align: center; font-size: .95rem; margin-bottom: 16px;
     }
 
-    @media(max-width:700px) {
+    @media (max-width: 700px) {
       .services-hero { padding-bottom: 30px; }
       .slider-wrapper { height: 300px; }
     }
@@ -168,13 +163,20 @@
   <!-- HERO -->
   <section class="services-hero">
     <h1>Our Services</h1>
-    <p>From routine home cleans to specialized treatments, Emerald Cleaners has you covered. Swipe each slider to see before &amp; after results.</p>
+    <p>From routine home cleans to specialized treatments, Emerald Cleaners has you covered. Swipe each slider to see before &amp; after magic! ✨</p>
   </section>
 
   <!-- 1. House Cleaning -->
   <div class="service-block">
     <h2>1. House Cleaning</h2>
-    <p>Regular maintenance cleans: dusting, vacuuming, mopping, kitchen &amp; bathroom surfaces.</p>
+    <p>🧹🏠 Keep your home fresh and spotless with our regular cleans:</p>
+    <ul>
+      <li>✨ Dusting all surfaces, skirting boards & light fittings</li>
+      <li>🧼 Wiping & sanitising kitchen countertops, sinks & appliances</li>
+      <li>🚿 Cleaning & disinfecting bathroom fixtures & tiles</li>
+      <li>🧽 Vacuuming carpets & upholstery, mopping hard floors</li>
+      <li>🔄 Emptying bins, replacing liners & general tidy-up</li>
+    </ul>
     <div class="slider-wrapper">
       <div class="slider-container" id="house-slider">
         <img src="dirty-house.png" alt="Dirty House">
@@ -187,19 +189,17 @@
     </div>
   </div>
 
-  <!-- 2. Deep Cleaning (updated description) -->
+  <!-- 2. Deep Cleaning -->
   <div class="service-block">
     <h2>2. Deep Cleaning</h2>
-    <p style="max-width:700px; margin:0 auto 24px; text-align:left;">
-      A comprehensive one-off overhaul of every nook and cranny:
-      <ul style="list-style:disc; padding-left:1.5em; margin-top:0;">
-        <li>Degreasing kitchen: oven, hob, extractor fan & cupboards</li>
-        <li>Sanitising bathroom: tile & grout scrubbing, shower screens & seals</li>
-        <li>Dusting and wiping skirting boards, door frames, window sills & light fittings</li>
-        <li>Vacuuming & steam-cleaning carpets and upholstery</li>
-        <li>Deep sanitisation of touch points: handles, switches & rails</li>
-      </ul>
-    </p>
+    <p>A comprehensive one-off overhaul of every nook and cranny:</p>
+    <ul>
+      <li>🍳 Degreasing kitchen: oven, hob, extractor fan & cupboards</li>
+      <li>🚿 Sanitising bathroom: tile & grout scrubbing, shower screens & seals</li>
+      <li>🪟 Dusting & wiping window sills, door frames & rails</li>
+      <li>🧼 Vacuuming & steam-cleaning carpets, rugs & upholstery</li>
+      <li>🔑 Deep sanitisation of all touch points: handles, switches & remotes</li>
+    </ul>
     <div class="slider-wrapper">
       <div class="slider-container" id="deep-slider">
         <img src="dirty-deep.png" alt="Dirty Deep Clean">
@@ -215,7 +215,14 @@
   <!-- 3. Move-In / Move-Out Cleaning -->
   <div class="service-block">
     <h2>3. Move-In / Move-Out Cleaning</h2>
-    <p>Thorough prep or final cleans for rentals, real estate turnarounds & moving households.</p>
+    <p>🚚🏠 Preparing properties for new occupants or leaving them spotless:</p>
+    <ul>
+      <li>🗄️ Cleaning inside cabinets, wardrobes & storage areas</li>
+      <li>🛋️ Vacuuming & spot-treatment of carpets, steps & hallways</li>
+      <li>🧽 Scrubbing floors, walls & skirting for rental inspections</li>
+      <li>🚪 Wiping doors, frames, handles & light switches</li>
+      <li>🔧 Optional extras: window cleaning, carpet shampoo & oven cleans</li>
+    </ul>
     <div class="slider-wrapper">
       <div class="slider-container" id="move-slider">
         <img src="dirty-move.png" alt="Dirty Move In/Out">
@@ -234,8 +241,8 @@
     <div class="additional-grid">
       <!-- Carpet Cleaning -->
       <div class="additional-item">
-        <h3>Carpet Cleaning</h3>
-        <p>Hot-water extraction & stain removal for plush, hygienic carpets.</p>
+        <h3>🧽 Carpet Cleaning</h3>
+        <p>Hot-water extraction, stain removal & deodorising for a fresh, plush carpet.</p>
         <div class="slider-wrapper">
           <div class="slider-container" id="carpet-slider">
             <img src="dirty-carpet.png" alt="Dirty Carpet">
@@ -249,8 +256,8 @@
       </div>
       <!-- Window Cleaning -->
       <div class="additional-item">
-        <h3>Window Cleaning</h3>
-        <p>Inside &amp; outside glass, tracks & sills—streak-free shine.</p>
+        <h3>🪟 Window Cleaning</h3>
+        <p>Streak-free shine inside & out, including frames, tracks & sills.</p>
         <div class="slider-wrapper">
           <div class="slider-container" id="windows-slider">
             <img src="dirty-windows.png" alt="Dirty Windows">
@@ -264,8 +271,8 @@
       </div>
       <!-- Oven Cleaning -->
       <div class="additional-item">
-        <h3>Oven Cleaning</h3>
-        <p>Degreasing ovens, hobs, griddles & range hoods.</p>
+        <h3>🍳 Oven Cleaning</h3>
+        <p>Degrease & de-carbonise inside ovens, hobs & range hoods for a spotless finish.</p>
         <div class="slider-wrapper">
           <div class="slider-container" id="oven-slider">
             <img src="dirty-oven.png" alt="Dirty Oven">
@@ -279,8 +286,8 @@
       </div>
       <!-- Pressure Washing -->
       <div class="additional-item">
-        <h3>Pressure Washing</h3>
-        <p>Driveways, patios, decking—blast away built-up dirt.</p>
+        <h3>🚿 Pressure Washing</h3>
+        <p>Blast away dirt from driveways, patios, decking & exterior walls.</p>
         <div class="slider-wrapper">
           <div class="slider-container" id="pressure-slider">
             <img src="dirty-pressure.png" alt="Dirty Pressure Wash">
@@ -297,42 +304,38 @@
 
   <!-- SLIDER SCRIPT -->
   <script>
-    ['house','deep','move','carpet','windows','oven','pressure'].forEach(id => {
-      const slider = document.getElementById(id + '-slider');
-      const cleanEl = document.getElementById(id + '-clean');
-      const handle  = document.getElementById(id + '-handle');
-      const leftBtn = document.getElementById(id + '-left');
-      const rightBtn= document.getElementById(id + '-right');
-      let pct = 50, dragging = false;
-
-      function setPct(p) {
-        pct = Math.max(0, Math.min(100, p));
-        cleanEl.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
-        handle.style.left = pct + '%';
-      }
-
-      handle.addEventListener('mousedown', () => dragging = true);
-      document.addEventListener('mouseup', () => dragging = false);
-      document.addEventListener('mousemove', e => {
-        if (!dragging) return;
-        const r = slider.getBoundingClientRect();
-        setPct((e.clientX - r.left) / r.width * 100);
+    ['house','deep','move','carpet','windows','oven','pressure']
+      .forEach(id => {
+        const slider = document.getElementById(id+'-slider');
+        const clean  = document.getElementById(id+'-clean');
+        const handle = document.getElementById(id+'-handle');
+        const left   = document.getElementById(id+'-left');
+        const right  = document.getElementById(id+'-right');
+        let pct = 50, dragging = false;
+        function setPct(p) {
+          pct = Math.max(0, Math.min(100, p));
+          clean.style.clipPath = `inset(0 ${100-pct}% 0 0)`;
+          handle.style.left = pct + '%';
+        }
+        handle.addEventListener('mousedown', () => dragging = true);
+        document.addEventListener('mouseup', () => dragging = false);
+        document.addEventListener('mousemove', e => {
+          if (!dragging) return;
+          const r = slider.getBoundingClientRect();
+          setPct((e.clientX - r.left)/r.width*100);
+        });
+        handle.addEventListener('touchstart', e => { dragging = true; e.preventDefault(); });
+        document.addEventListener('touchend', () => dragging = false);
+        document.addEventListener('touchmove', e => {
+          if (!dragging) return;
+          const t = e.touches[0], r = slider.getBoundingClientRect();
+          setPct((t.clientX - r.left)/r.width*100);
+          e.preventDefault();
+        });
+        left.addEventListener('click', () => setPct(pct-10));
+        right.addEventListener('click', () => setPct(pct+10));
+        setPct(50);
       });
-
-      handle.addEventListener('touchstart', e => { dragging = true; e.preventDefault(); });
-      document.addEventListener('touchend', () => dragging = false);
-      document.addEventListener('touchmove', e => {
-        if (!dragging) return;
-        const t = e.touches[0], r = slider.getBoundingClientRect();
-        setPct((t.clientX - r.left) / r.width * 100);
-        e.preventDefault();
-      });
-
-      leftBtn.addEventListener('click', () => setPct(pct - 10));
-      rightBtn.addEventListener('click', () => setPct(pct + 10));
-
-      setPct(50);
-    });
   </script>
 </body>
 </html>
